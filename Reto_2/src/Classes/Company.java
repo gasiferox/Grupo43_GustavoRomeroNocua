@@ -225,18 +225,115 @@ public class Company {
                     legalRepre.setEmail(input.nextLine());
 
                     Position position = new Position();
-                    System.out.print("\tCargo dentro de la empresa: \n");
+                    System.out.println("\tCargo dentro de la empresa: \n");
+                    
+                    System.out.println("\n\n#########################################################");
+                    System.out.println("#                      MinTIC 2022                      #");
+                    System.out.println("#                         CARGOS                        #");
+                    System.out.println("#########################################################");
+                    System.out.println("\nSELECCIONE EL CARGO DEL EMPLEADO\n");
+                    System.out.println("\t1. DIRECTOR");
+                    System.out.println("\t2. GERENTE");
+                    System.out.println("\t3. SUPERVISOR");
+                    System.out.println("\t4. ANALISTA");
+
+                    int jobTitleOpt = Integer.parseInt(input.nextLine());
+                    switch (jobTitleOpt) {
+                        case 1:
+                            position = new Position();
+                            position.setTitle("Director");
+                            legalRepre.setPosition(position);
+//                            System.out.println("2. " + position.getTitle());
+                            System.out.println("3. " + legalRepre.getPosition().getTitle());
+                            break;
+                        case 2:
+                            position.setTitle("Gerente");
+                            legalRepre.setPosition(position);
+                            System.out.println("3. " + legalRepre.getPosition().getTitle());
+                            break;
+                        case 3:
+                            position.setTitle("Supervisor");
+                            legalRepre.setPosition(position);
+                            System.out.println("3. " + legalRepre.getPosition().getTitle());
+                            break;
+                        case 4:
+                            position.setTitle("Analista");
+                            legalRepre.setPosition(position);
+                            System.out.println("3. " + legalRepre.getPosition().getTitle());
+                            break;
+                        default:
+                            System.out.println("Opción inválida");
+                    }
+
                     //position.setTitle(input.nextLine());
-                    employee.crudPosition();
-                    legalRepre.setPosition(position);
+//                    employee.crudPosition();
+//                    legalRepre.setPosition(position);
 
                     System.out.print("\tNivel del cargo: ");
-                    position.setLevel(input.nextLine());
-                    legalRepre.setPosition(position);
+//                    position.setLevel(input.nextLine());
+//                    legalRepre.setPosition(position);
+                    
+                    System.out.println("\n\n#########################################################");
+                    System.out.println("#                      MinTIC 2022                      #");
+                    System.out.println("#                         CARGOS                        #");
+                    System.out.println("#########################################################");
+                    System.out.println("\nSELECCIONE EL CARGO DEL EMPLEADO\n");
+                    System.out.println("\t1. NIVEL - 1");
+                    System.out.println("\t2. NIVEL - 2");
+                    System.out.println("\t3. NIVEL - 3");
 
+                    int jobLevelOpt = Integer.parseInt(input.nextLine());
+                    switch (jobLevelOpt) {
+                        case 1:
+                            System.out.println("1. " + position.getLevel());
+//                            legalRepre.setPosition(position);
+                            position.setLevel("nivel1");
+                            legalRepre.setPosition(position);
+                            //legalRepre.setPosition(position);
+                            System.out.println("2. " + position.getLevel());
+//                            System.out.println("3. " + legalRepre.getPosition().getLevel());
+                            break;
+                        case 2:
+                            position.setLevel("nivel2");
+                            legalRepre.setPosition(position);
+                            System.out.println(position.getLevel());
+                            break;
+                        case 3:
+                            position.setLevel("nivel3");
+                            legalRepre.setPosition(position);
+                            System.out.println(position.getLevel());
+                            break;
+                        default:
+                            System.out.println("Opción inválida");
+                    }
+                    
+                    System.out.println("\nES ADMINISTRATIVO?\n");
+                    System.out.println("\t1. SI");
+                    System.out.println("\t2. NO");
+
+                    int empTypeOpt = Integer.parseInt(input.nextLine());
+                    switch (empTypeOpt) {
+                        case 1:
+                            legalRepre.setAdmin(true);
+                            break;
+                        case 2:
+                            legalRepre.setAdmin(false);
+                            break;
+                        default:
+                            System.out.println("Comando erroneo");
+                    }
+                    
+                    System.out.print("\nINGRESE EL SALARIO: ");
+                    legalRepre.setSalary(Integer.parseInt(input.nextLine()));
+
+
+                    
+//                    legalRepre = new Employee(legalRepre.getSalary(), position.getTitle(), position.getLevel(), legalRepre.isAdmin(), legalRepre.getName(), legalRepre.getLastname(), legalRepre.getId(), legalRepre.getEmail());
                     Company company = new Company(coName, nit, address, legalRepre);
+
                     listCompanies.add(company);
                     listEmployees.add(legalRepre);
+                            
                     
                     for (int i = 0; i < listEmployees.size(); i++) {
                         System.out.println(listEmployees.get(i).toString());
@@ -258,16 +355,14 @@ public class Company {
                         //legalRepre = new Employee();
 
                         company = listCompanies.get(i);
-                        employee = listEmployees.get(i);
+                        //employee = listEmployees.get(i);
 
                         System.out.println("=========================================================\n");
                         System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
                         System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
                         System.out.println("Correo electrónico RL: " + company.employee.getEmail());
-                        System.out.println("Cargo: " + company.employee.getPosition().getTitle());
-//                        System.out.println("Cargo: " + employee.position.getTitle());
-                        System.out.println("Cargo: " + employee.getPosition().getTitle());
-                        System.out.println("\nNivel: " + company.employee.getPosition().getLevel());
+                        System.out.println("Cargo: " + company.getEmployee().getPosition().getTitle());
+                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
                         System.out.println("\n");
 
                     }
