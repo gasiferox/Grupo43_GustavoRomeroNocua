@@ -5,6 +5,8 @@
  */
 package Classes;
 
+import java.util.Scanner;
+
 /**
  *
  * @author maverick
@@ -73,21 +75,47 @@ public class Employee extends Person {
     
     public void crudPosition() {
         
-        boolean exitJobs = false;
-        while (!exitJobs) {
+        Scanner input = new Scanner(System.in);
+    
+        position = new Position();
+        //boolean exitJobs = false;
+        //while (!exitJobs) {
         
             System.out.println("\n\n#########################################################");
             System.out.println("#                      MinTIC 2022                      #");
             System.out.println("#                         CARGOS                        #");
             System.out.println("#########################################################");
-            System.out.println("\nSELECCIONA UNA OPCIÓN DEL MENÚ\n");
-            System.out.println("\t1. CREAR EMPRESA");
-            System.out.println("\t2. LISTAR EMPRESAS");
-            System.out.println("\t3. EDITAR EMPRESA");
-            System.out.println("\t4. BORRAR EMPRESA");
+            System.out.println("\nSELECCIONE EL CARGO DEL EMPLEADO\n");
+            System.out.println("\t1. DIRECTOR");
+            System.out.println("\t2. GERENTE");
+            System.out.println("\t3. SUPERVISOR");
+            System.out.println("\t4. ANALISTA");
             System.out.println("\n\t5. REGRESAR AL MENÚ ANTERIOR");
+            
+            int jobOpt = Integer.parseInt(input.nextLine());
+            switch (jobOpt) {
+                case 1:
+                    System.out.println(position.getTitle());
+                    position.setTitle("Director");
+                    System.out.println(position.getTitle());
+                    break;
+                case 2:
+                    position.setTitle("Gerente");
+                    break;
+                case 3:
+                    position.setTitle("Supervisor");
+                    break;
+                case 4:
+                    position.setTitle("Analista");
+                    break;
+                case 5:
+                    break;
+                default:
+                    System.out.println("Opción inválida");
+          //  }
 
         }
+            
     }
 
 

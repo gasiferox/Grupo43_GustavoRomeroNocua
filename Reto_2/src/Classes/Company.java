@@ -225,8 +225,9 @@ public class Company {
                     legalRepre.setEmail(input.nextLine());
 
                     Position position = new Position();
-                    System.out.print("\tCargo dentro de la empresa: ");
-                    position.setTitle(input.nextLine());
+                    System.out.print("\tCargo dentro de la empresa: \n");
+                    //position.setTitle(input.nextLine());
+                    employee.crudPosition();
                     legalRepre.setPosition(position);
 
                     System.out.print("\tNivel del cargo: ");
@@ -236,6 +237,10 @@ public class Company {
                     Company company = new Company(coName, nit, address, legalRepre);
                     listCompanies.add(company);
                     listEmployees.add(legalRepre);
+                    
+                    for (int i = 0; i < listEmployees.size(); i++) {
+                        System.out.println(listEmployees.get(i).toString());
+                    }
 
                     System.out.println("\n======================= EMPRESA CREADA CON ÉXITO =======================");
 
@@ -253,13 +258,16 @@ public class Company {
                         //legalRepre = new Employee();
 
                         company = listCompanies.get(i);
-                        //employee = listEmployees.get(i);
+                        employee = listEmployees.get(i);
 
                         System.out.println("=========================================================\n");
                         System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
                         System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
                         System.out.println("Correo electrónico RL: " + company.employee.getEmail());
-                        System.out.println("Cargo: " + company.employee.getPosition().getTitle() + "\nNivel: " + company.employee.getPosition().getLevel());
+                        System.out.println("Cargo: " + company.employee.getPosition().getTitle());
+//                        System.out.println("Cargo: " + employee.position.getTitle());
+                        System.out.println("Cargo: " + employee.getPosition().getTitle());
+                        System.out.println("\nNivel: " + company.employee.getPosition().getLevel());
                         System.out.println("\n");
 
                     }
@@ -462,79 +470,79 @@ public class Company {
     }
     
     
-    public void crudEmployees() {
+//    public void crudEmployees() {
+//        
+//        Scanner input = new Scanner(System.in);
+//        
+//        System.out.println("\t\tMinTIC 2022");
+//        System.out.println("\n===========================================");
+//        System.out.println("\nSELECCIONA UNA OPCIÓN DEL MENÚ");
+//        System.out.println("\t1. Crear empleado");
+//        System.out.println("\t2. Consultar base de datos de empleados");
+//        System.out.println("\t3. Editar empleado");
+//        System.out.println("\t2. Borrar empleado");
+//
+//        int optMenu3 = input.nextInt();
+//        
+//        switch(optMenu3) {
+//            case 1:
+//                System.out.println("\tCúantos empleados deseas agregar?");
+//                int numEmployees = input.nextInt();
+//                for (int i = 0; i < numEmployees; i++) {
+//                    System.out.println("\tEmpleado" + (i+1));
+//                    System.out.println("\n===========================================");
+//                    System.out.println("\tIngrese el nombre: ");
+//                    String name = input.next();
+//                    
+//                    System.out.println("\tIngrese el apellido: ");
+//                    String lastname = input.next();
+//                    
+//                    System.out.println("\tIngrese el documento: ");
+//                    String id = input.next();
+//                    
+//                    System.out.println("\tIngrese el correo electrónico: ");
+//                    String email = input.next();
+//                    
+//                    System.out.println("\tIngrese el salario: ");
+//                    int salary = input.nextInt();
+//                    
+//                    System.out.println("\tIndique el cargo: ");
+//                    Position position = new Position();
+//                    position.setTitle(input.next());
+//                    
+//                    System.out.println("\tIndique el nivel del cargo: ");
+//                    position.setLevel(input.next());
+//                                        
+//                    employee = new Employee(salary, position, name, lastname, id, email, admin);
+//                    listEmployees.add(employee);
+//                    
+//                    System.out.println(listEmployees);
+//                    
+//                }
+//                break;
+//            case 2:
+//                System.out.println("======== BASE DE DATOS DE EMPLEADOS ========");
+//                for (int i = 0; i < listEmployees.size(); i++) {
+//                    System.out.println("EMPLEADO " + (i + 1));
+//                    employee = listEmployees.get(i);
+//                    System.out.println("Nombre y apellido: " + employee.getName() + " " + employee.getLastname());
+//                    System.out.println("Documento: " + employee.getId());
+//                    System.out.println("Correo electrónico: " + employee.getEmail());
+//                    System.out.println("Salario: $" + employee.getSalary());
+//                    Position position = new Position("","");
+//                    System.out.println("Cargo: " + position.getTitle());
+//                    System.out.println("Nivel del cargo: " + position.getLevel());
+//                }
+//                break;
+//            case 3:
+//                break;
+//            case 4:
+//                break;
+//            default:
+//                System.out.println("Opción inválida");
+//                
+//        }
         
-        Scanner input = new Scanner(System.in);
-        
-        System.out.println("\t\tMinTIC 2022");
-        System.out.println("\n===========================================");
-        System.out.println("\nSELECCIONA UNA OPCIÓN DEL MENÚ");
-        System.out.println("\t1. Crear empleado");
-        System.out.println("\t2. Consultar base de datos de empleados");
-        System.out.println("\t3. Editar empleado");
-        System.out.println("\t2. Borrar empleado");
-
-        int optMenu3 = input.nextInt();
-        
-        switch(optMenu3) {
-            case 1:
-                System.out.println("\tCúantos empleados deseas agregar?");
-                int numEmployees = input.nextInt();
-                for (int i = 0; i < numEmployees; i++) {
-                    System.out.println("\tEmpleado" + (i+1));
-                    System.out.println("\n===========================================");
-                    System.out.println("\tIngrese el nombre: ");
-                    String name = input.next();
-                    
-                    System.out.println("\tIngrese el apellido: ");
-                    String lastname = input.next();
-                    
-                    System.out.println("\tIngrese el documento: ");
-                    String id = input.next();
-                    
-                    System.out.println("\tIngrese el correo electrónico: ");
-                    String email = input.next();
-                    
-                    System.out.println("\tIngrese el salario: ");
-                    int salary = input.nextInt();
-                    
-                    System.out.println("\tIndique el cargo: ");
-                    Position position = new Position();
-                    position.setTitle(input.next());
-                    
-                    System.out.println("\tIndique el nivel del cargo: ");
-                    position.setLevel(input.next());
-                                        
-                    employee = new Employee(salary, position, name, lastname, id, email);
-                    listEmployees.add(employee);
-                    
-                    System.out.println(listEmployees);
-                    
-                }
-                break;
-            case 2:
-                System.out.println("======== BASE DE DATOS DE EMPLEADOS ========");
-                for (int i = 0; i < listEmployees.size(); i++) {
-                    System.out.println("EMPLEADO " + (i + 1));
-                    employee = listEmployees.get(i);
-                    System.out.println("Nombre y apellido: " + employee.getName() + " " + employee.getLastname());
-                    System.out.println("Documento: " + employee.getId());
-                    System.out.println("Correo electrónico: " + employee.getEmail());
-                    System.out.println("Salario: $" + employee.getSalary());
-                    Position position = new Position("","");
-                    System.out.println("Cargo: " + position.getTitle());
-                    System.out.println("Nivel del cargo: " + position.getLevel());
-                }
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            default:
-                System.out.println("Opción inválida");
-                
-        }
-        
-    }
+//    }
     
 }

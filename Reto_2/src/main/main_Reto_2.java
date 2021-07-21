@@ -78,7 +78,7 @@ public class main_Reto_2 {
                 case 2:
                     System.out.println("llamar metodo crudEmployee");
                     //Company employee = new Company();
-                    employee.crudEmployees();
+//                    employee.crudEmployees();
                     break;
                 case 3:
                     System.out.println("llamar método crudClientes");
