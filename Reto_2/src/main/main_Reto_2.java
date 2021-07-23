@@ -45,10 +45,6 @@ public class main_Reto_2 {
         Scanner input = new Scanner(System.in);
         
         Company company = new Company();
-        Company employee = new Company();
-        //Company clients = new Company();
-                    
-                    
         
         boolean exitProgram = false;
         
@@ -72,18 +68,13 @@ public class main_Reto_2 {
             
             switch(optMenu1) {
                 case 1:
-                    //Company company = new Company();
                     company.crudCompany();
                     break;
                 case 2:
-                    System.out.println("llamar metodo crudEmployee");
-                    //Company employee = new Company();
-//                    employee.crudEmployees();
+                    company.crudEmployees();
                     break;
                 case 3:
-                    System.out.println("llamar método crudClientes");
-                    //Company clients = new Company();
-                    
+                    company.crudClients();
                     break;
                 case 4:
                     exitProgram = true;

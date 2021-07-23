@@ -5,5 +5,5 @@ Java Programming Class Group 43
 
 * Reto 1 - Entregado
 
-* Reto 2 - En proceso de terminación, falta la implementación de los últimos crud pendientes.
+* Reto 2 - En fase final, tiene el proceso completo, queda pendiente agregar la adición de subordinados.
 
