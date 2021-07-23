@@ -27,7 +27,6 @@ public class Person {
         this.email = email;
     }
     
-    
 
     /**
      * @return the name

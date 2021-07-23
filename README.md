@@ -5,4 +5,5 @@ Java Programming Class Group 43
 
 * Reto 1 - Entregado
 
-* Reto 2 - Enviado para revisión __No Finalizado__ 
+* Reto 2 - En proceso de terminación, falta la implementación de los últimos crud pendientes.
+

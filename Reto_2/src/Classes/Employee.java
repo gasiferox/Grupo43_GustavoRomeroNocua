@@ -7,42 +7,46 @@ package Classes;
 
 //import java.util.Scanner;
 
+//import java.util.LinkedList;
+
+
 /**
  *
  * @author maverick
  */
 public class Employee extends Person {
     
-    private int salary;
+    private double salary;
     private Position position;
     private boolean admin;
+    //private LinkedList<Employee> listSubordinates = new LinkedList<>();
 
     public Employee() {
     }
 
-    public Employee(int salary, Position position, boolean admin, String name, String lastname, String id, String email) {
+    public Employee(double salary, Position position, boolean admin, String name, String lastname, String id, String email) {
         super(name, lastname, id, email);
         this.salary = salary;
         this.position = position;
-        this.admin = admin;
     }
 
-    Employee(int salary, String level, String level0, boolean admin, String name, String lastname, String id, String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    Employee(int salary, String level, String level0, boolean admin, String name, String lastname, String id, String email) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+
 
 
     /**
      * @return the salary
      */
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
     /**
      * @param salary the salary to set
      */
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 

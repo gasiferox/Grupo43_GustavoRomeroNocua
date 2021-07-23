@@ -42,11 +42,12 @@ public class Company {
     private String nit;
     private String address;
     private Employee employee;
-    private LinkedList<Company> listCompanies = new LinkedList<>();
-    private LinkedList<Employee> listEmployees = new LinkedList<>();
-    private LinkedList<Client> listClients = new LinkedList<>();
-    private LinkedList<Admin> listAdmins = new LinkedList<>();
-    private Scanner input = new Scanner(System.in);
+    private Client client;
+    //private LinkedList<Company> listCompanies = new LinkedList<>();
+    //private LinkedList<Employee> listEmployees = new LinkedList<>();
+    //private LinkedList<Client> listClients = new LinkedList<>();
+    //private LinkedList<Admin> listAdmins = new LinkedList<>();
+    private static Scanner input = new Scanner(System.in);
     
     // Constructor empty
     public Company() {
@@ -60,8 +61,7 @@ public class Company {
         this.employee = employee;
     }
     
-    
-    
+        
     // Encapsulated vars
     /**
      * @return the coName
@@ -118,69 +118,94 @@ public class Company {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
-
-    /**
-     * @return the listEmployees
-     */
-    public LinkedList<Employee> getListEmployees() {
-        return listEmployees;
-    }
-
-    /**
-     * @param listEmployees the listEmployees to set
-     */
-    public void setListEmployees(LinkedList<Employee> listEmployees) {
-        this.listEmployees = listEmployees;
-    }
-
-    /**
-     * @return the listClients
-     */
-    public LinkedList<Client> getListClients() {
-        return listClients;
-    }
-
-    /**
-     * @param listClients the listClients to set
-     */
-    public void setListClients(LinkedList<Client> listClients) {
-        this.listClients = listClients;
-    }
-
-    /**
-     * @return the listAdmins
-     */
-    public LinkedList<Admin> getListAdmins() {
-        return listAdmins;
-    }
-
-    /**
-     * @param listAdmins the listAdmins to set
-     */
-    public void setListAdmins(LinkedList<Admin> listAdmins) {
-        this.listAdmins = listAdmins;
-    }
     
     /**
-     * @return the listCompanies
+     * @return the client
      */
-    public LinkedList<Company> getListCompanies() {
-        return listCompanies;
+    public Client getClient() {
+        return client;
     }
 
     /**
-     * @param listCompanies the listCompanies to set
+     * @param client the client to set
      */
-    public void setListCompanies(LinkedList<Company> listCompanies) {
-        this.listCompanies = listCompanies;
+    public void setClient(Client client) {
+        this.client = client;
     }
+
+
+//    /**
+//     * @return the listEmployees
+//     */
+//    public LinkedList<Employee> getListEmployees() {
+//        return listEmployees;
+//    }
+//
+//    /**
+//     * @param listEmployees the listEmployees to set
+//     */
+//    public void setListEmployees(LinkedList<Employee> listEmployees) {
+//        this.listEmployees = listEmployees;
+//    }
+//
+//    /**
+//     * @return the listClients
+//     */
+//    public LinkedList<Client> getListClients() {
+//        return listClients;
+//    }
+//
+//    /**
+//     * @param listClients the listClients to set
+//     */
+//    public void setListClients(LinkedList<Client> listClients) {
+//        this.listClients = listClients;
+//    }
+//
+//    /**
+//     * @return the listAdmins
+//     */
+//    public LinkedList<Admin> getListAdmins() {
+//        return listAdmins;
+//    }
+//
+//    /**
+//     * @param listAdmins the listAdmins to set
+//     */
+//    public void setListAdmins(LinkedList<Admin> listAdmins) {
+//        this.listAdmins = listAdmins;
+//    }
+//    
+//    /**
+//     * @return the listCompanies
+//     */
+//    public LinkedList<Company> getListCompanies() {
+//        return listCompanies;
+//    }
+//
+//    /**
+//     * @param listCompanies the listCompanies to set
+//     */
+//    public void setListCompanies(LinkedList<Company> listCompanies) {
+//        this.listCompanies = listCompanies;
+//    }
 
     
     // Custom methods and functions
     public void crudCompany()  {
         
+        // Lists defined
+        LinkedList<Company> listCompanies = new LinkedList<>();
+        //LinkedList<Employee> listEmployees = new LinkedList<>();
+
+        
         boolean exit = false;
         while (!exit) {
+            
+            // Instanced objects
+            Employee legalRepre = new Employee();
+            //Company company = new Company();
+            Position position = new Position();
             
             System.out.println("\n\n#########################################################");
             System.out.println("#                      MinTIC 2022                      #");
@@ -197,12 +222,13 @@ public class Company {
 
             switch(optMenu2) {
                 case 1:
-            System.out.println("\n\n#########################################################");
-            System.out.println("#                      MinTIC 2022                      #");
-            System.out.println("#                     CREAR EMPRESA                     #");
-            System.out.println("#########################################################");
+                    System.out.println("\n\n#########################################################");
+                    System.out.println("#                      MinTIC 2022                      #");
+                    System.out.println("#                     CREAR EMPRESA                     #");
+                    System.out.println("#########################################################");
                     System.out.println("\n\tIngrese los datos de la empresa");
                     System.out.print("\n\tRazón social: ");
+                    // Referenced to local variables
                     this.coName = input.nextLine();
 
                     System.out.print("\tIngrese el NIT: ");
@@ -211,20 +237,19 @@ public class Company {
                     System.out.print("\tIngrese la dirección: ");
                     this.address = input.nextLine();
 
-                    System.out.print("\tNombre del Represente Legal: ");
-                    Employee legalRepre = new Employee();
+                    // Referenced to legalRepre object
+                    System.out.print("\tNombre del Representante Legal: ");
                     legalRepre.setName(input.nextLine());
 
-                    System.out.print("\tApellido del Represente Legal: ");
+                    System.out.print("\tApellido del Representante Legal: ");
                     legalRepre.setLastname(input.nextLine());
 
-                    System.out.print("\tDocumento del Represente Legal: ");
+                    System.out.print("\tDocumento del Representante Legal: ");
                     legalRepre.setId(input.nextLine());
 
                     System.out.print("\tCorreo electrónico del representante legal: ");
                     legalRepre.setEmail(input.nextLine());
 
-                    Position position = new Position();
                     System.out.println("\tCargo dentro de la empresa: \n");
                     
                     System.out.println("\n\n#########################################################");
@@ -240,38 +265,26 @@ public class Company {
                     int jobTitleOpt = Integer.parseInt(input.nextLine());
                     switch (jobTitleOpt) {
                         case 1:
-                            position = new Position();
-                            position.setTitle("Director");
+                            position.setTitle("Director");  // Referenced to position object
                             legalRepre.setPosition(position);
-//                            System.out.println("2. " + position.getTitle());
-                            System.out.println("3. " + legalRepre.getPosition().getTitle());
                             break;
                         case 2:
                             position.setTitle("Gerente");
                             legalRepre.setPosition(position);
-                            System.out.println("3. " + legalRepre.getPosition().getTitle());
                             break;
                         case 3:
                             position.setTitle("Supervisor");
                             legalRepre.setPosition(position);
-                            System.out.println("3. " + legalRepre.getPosition().getTitle());
                             break;
                         case 4:
                             position.setTitle("Analista");
                             legalRepre.setPosition(position);
-                            System.out.println("3. " + legalRepre.getPosition().getTitle());
                             break;
                         default:
                             System.out.println("Opción inválida");
                     }
 
-                    //position.setTitle(input.nextLine());
-//                    employee.crudPosition();
-//                    legalRepre.setPosition(position);
-
                     System.out.print("\tNivel del cargo: ");
-//                    position.setLevel(input.nextLine());
-//                    legalRepre.setPosition(position);
                     
                     System.out.println("\n\n#########################################################");
                     System.out.println("#                      MinTIC 2022                      #");
@@ -285,26 +298,19 @@ public class Company {
                     int jobLevelOpt = Integer.parseInt(input.nextLine());
                     switch (jobLevelOpt) {
                         case 1:
-                            System.out.println("1. " + position.getLevel());
-//                            legalRepre.setPosition(position);
-                            position.setLevel("nivel1");
+                            position.setLevel("Nivel - 1");
                             legalRepre.setPosition(position);
-                            //legalRepre.setPosition(position);
-                            System.out.println("2. " + position.getLevel());
-//                            System.out.println("3. " + legalRepre.getPosition().getLevel());
                             break;
                         case 2:
-                            position.setLevel("nivel2");
+                            position.setLevel("Nivel - 2");
                             legalRepre.setPosition(position);
-                            System.out.println(position.getLevel());
                             break;
                         case 3:
-                            position.setLevel("nivel3");
+                            position.setLevel("Nivel - 3");
                             legalRepre.setPosition(position);
-                            System.out.println(position.getLevel());
                             break;
                         default:
-                            System.out.println("Opción inválida");
+                            System.out.println("========== Ha intoducido una opción inválida!! ==========");
                     }
                     
                     System.out.println("\nES ADMINISTRATIVO?\n");
@@ -320,24 +326,22 @@ public class Company {
                             legalRepre.setAdmin(false);
                             break;
                         default:
-                            System.out.println("Comando erroneo");
+                            System.out.println("========== Ha intoducido una opción inválida!! ==========");
                     }
                     
                     System.out.print("\nINGRESE EL SALARIO: ");
                     legalRepre.setSalary(Integer.parseInt(input.nextLine()));
 
-
-                    
-//                    legalRepre = new Employee(legalRepre.getSalary(), position.getTitle(), position.getLevel(), legalRepre.isAdmin(), legalRepre.getName(), legalRepre.getLastname(), legalRepre.getId(), legalRepre.getEmail());
-                    Company company = new Company(coName, nit, address, legalRepre);
+                    Company company = new Company(this.coName, this.nit, this.address, legalRepre);
 
                     listCompanies.add(company);
-                    listEmployees.add(legalRepre);
+                    //listEmployees.add(legalRepre);
+//                    Employee legalRepre = this.listEmployees.add(employee);
                             
                     
-                    for (int i = 0; i < listEmployees.size(); i++) {
-                        System.out.println(listEmployees.get(i).toString());
-                    }
+//                    for (int i = 0; i < listEmployees.size(); i++) {
+//                        System.out.println(listEmployees.get(i).toString());
+//                    }
 
                     System.out.println("\n======================= EMPRESA CREADA CON ÉXITO =======================");
 
@@ -349,24 +353,31 @@ public class Company {
                     System.out.println("#########################################################");
 
                     for (int i = 0; i < listCompanies.size(); i++) {
-                        //Company listCompany = new Company();
                         System.out.println("\n                        EMPRESA " + (i + 1));
 
-                        //legalRepre = new Employee();
-
                         company = listCompanies.get(i);
-                        //employee = listEmployees.get(i);
 
+                        // validate null variables
+//                        if (company =! null && company.getEmployee() =! null) {
                         System.out.println("=========================================================\n");
                         System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
-                        System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
-                        System.out.println("Correo electrónico RL: " + company.employee.getEmail());
-                        System.out.println("Cargo: " + company.getEmployee().getPosition().getTitle());
-                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
+                        System.out.println("Representante Legal: " + company.employee.getName() + /*" * " + lRepre.getName() + */" " + company.employee.getLastname() + /*" * " + lRepre.getLastname() + */"\nDocumento Representante Legal: " + company.employee.getId() /*+"*" + lRepre.getId()*/);
+                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                        System.out.println("Cargo dentro de la empresa: " + company.getEmployee().getPosition().getTitle()/* + lRepre.getPosition().getTitle()*/);
+                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel() /*+ lRepre.getPosition().getLevel()*/);
+                        System.out.println("Salario: $" + company.getEmployee().getSalary()/* + lRepre.getSalary()*/);
+                        
+                        if (company.getEmployee().isAdmin()) {
+                            System.out.println("Administrativo: Si");
+                        } else {
+                            System.out.println("Administrativo: No");
+                        }
+                            
                         System.out.println("\n");
-
+                    //}
                     }
                     break;
+                    
                 case 3:
                     System.out.println("\n\n#########################################################");
                     System.out.println("#                      MinTIC 2022                      #");
@@ -378,12 +389,21 @@ public class Company {
                         company = listCompanies.get(editIndex);
                         System.out.println("\n             INFORMACIÓN ACTUAL DE LA EMPRESA");
                         System.out.println("=========================================================\n");
-                        System.out.println("\tRazón Social: " + company.coName + "\n\tNIT: " + company.nit + "\n\tDirección: " + company.address);
-                        System.out.println("\tRepresentante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\n\tDocumento Representante Legal: " + company.employee.getId());
-                        System.out.println("\tCorreo electrónico RL: " + company.employee.getEmail());
-                        System.out.println("\tCargo: " + company.employee.getPosition().getTitle() + "\n\tNivel: " + company.employee.getPosition().getLevel());
+                        System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
+                        System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
+                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                        System.out.println("Cargo dentro de la empresa: " + company.getEmployee().getPosition().getTitle());
+                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
+                        System.out.println("Salario: $" + company.getEmployee().getSalary());
+                        if (company.getEmployee().isAdmin()) {
+                            System.out.println("Administrativo: Si");
+                        } else {
+                            System.out.println("Administrativo: No");
+                        }
+                        System.out.println("\n");
+
+                        System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\t10. Salario\n\t11. Estatus de administrador\n\t12. Terminar edición");
                         System.out.println("\nQue campo desea cambiar?\n");
-                        System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
                         
                         boolean exitEdit = false;
                         while (!exitEdit) {
@@ -395,132 +415,239 @@ public class Company {
                                     company.setCoName(newCoName);
                                         System.out.println("\n        INFORMACIÓN ACTUALIZADA DE LA EMPRESA");
                                         System.out.println("=========================================================\n");
-                                        System.out.println("\tRazón Social: " + company.coName + "\n\tNIT: " + company.nit + "\n\tDirección: " + company.address);
-                                        System.out.println("\tRepresentante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\n\tDocumento Representante Legal: " + company.employee.getId());
-                                        System.out.println("\tCorreo electrónico RL: " + company.employee.getEmail());
-                                        System.out.println("\tCargo: " + company.employee.getPosition().getTitle() + "\n\tNivel: " + company.employee.getPosition().getLevel());
-                                        System.out.println("\nQue campo desea cambiar?\n");
-                                        System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
+                                        System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
+                                        System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
+                                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                                        System.out.println("Cargo dentro de la empresa: " + company.getEmployee().getPosition().getTitle());
+                                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
+                                        System.out.println("Salario: $" + company.getEmployee().getSalary());
+                                        if (company.getEmployee().isAdmin()) {
+                                            System.out.println("Administrativo: Si");
+                                        } else {
+                                            System.out.println("Administrativo: No");
+                                        }
+                                        System.out.println("\n");
+                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\t10. Salario\n\t11. Estatus de administrador\n\t12. Terminar edición");
                                     System.out.println("\nQue campo desea cambiar?\n");
-                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
                                     break;
                                 case 2:
                                     System.out.print("Nuevo NIT: ");
                                     company.setNit(input.nextLine());
                                         System.out.println("\n        INFORMACIÓN ACTUALIZADA DE LA EMPRESA");
                                         System.out.println("=========================================================\n");
-                                        System.out.println("\tRazón Social: " + company.coName + "\n\tNIT: " + company.nit + "\n\tDirección: " + company.address);
-                                        System.out.println("\tRepresentante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\n\tDocumento Representante Legal: " + company.employee.getId());
-                                        System.out.println("\tCorreo electrónico RL: " + company.employee.getEmail());
-                                        System.out.println("\tCargo: " + company.employee.getPosition().getTitle() + "\n\tNivel: " + company.employee.getPosition().getLevel());
-                                        System.out.println("\nQue campo desea cambiar?\n");
-                                        System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
+                                        System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
+                                        System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
+                                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                                        System.out.println("Cargo dentro de la empresa: " + company.getEmployee().getPosition().getTitle());
+                                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
+                                        System.out.println("Salario: $" + company.getEmployee().getSalary());
+                                        if (company.getEmployee().isAdmin()) {
+                                            System.out.println("Administrativo: Si");
+                                        } else {
+                                            System.out.println("Administrativo: No");
+                                        }
+                                        System.out.println("\n");
+                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\t10. Salario\n\t11. Estatus de administrador\n\t12. Terminar edición");
                                     System.out.println("\nQue campo desea cambiar?\n");
-                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
                                     break;
                                 case 3:
                                     System.out.print("Nueva dirección: ");
                                     company.setAddress(input.nextLine());
                                         System.out.println("\n        INFORMACIÓN ACTUALIZADA DE LA EMPRESA");
                                         System.out.println("=========================================================\n");
-                                        System.out.println("\tRazón Social: " + company.coName + "\n\tNIT: " + company.nit + "\n\tDirección: " + company.address);
-                                        System.out.println("\tRepresentante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\n\tDocumento Representante Legal: " + company.employee.getId());
-                                        System.out.println("\tCorreo electrónico RL: " + company.employee.getEmail());
-                                        System.out.println("\tCargo: " + company.employee.getPosition().getTitle() + "\n\tNivel: " + company.employee.getPosition().getLevel());
-                                        System.out.println("\nQue campo desea cambiar?\n");
-                                        System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
+                                        System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
+                                        System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
+                                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                                        System.out.println("Cargo dentro de la empresa: " + company.getEmployee().getPosition().getTitle());
+                                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
+                                        System.out.println("Salario: $" + company.getEmployee().getSalary());
+                                        if (company.getEmployee().isAdmin()) {
+                                            System.out.println("Administrativo: Si");
+                                        } else {
+                                            System.out.println("Administrativo: No");
+                                        }
+                                        System.out.println("\n");
+                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\t10. Salario\n\t11. Estatus de administrador\n\t12. Terminar edición");
                                     System.out.println("\nQue campo desea cambiar?\n");
-                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
                                     break;
                                 case 4:
                                     System.out.print("Nuevo nombre del Representante Legal: ");
                                     company.employee.setName(input.nextLine());
                                         System.out.println("\n        INFORMACIÓN ACTUALIZADA DE LA EMPRESA");
                                         System.out.println("=========================================================\n");
-                                        System.out.println("\tRazón Social: " + company.coName + "\n\tNIT: " + company.nit + "\n\tDirección: " + company.address);
-                                        System.out.println("\tRepresentante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\n\tDocumento Representante Legal: " + company.employee.getId());
-                                        System.out.println("\tCorreo electrónico RL: " + company.employee.getEmail());
-                                        System.out.println("\tCargo: " + company.employee.getPosition().getTitle() + "\n\tNivel: " + company.employee.getPosition().getLevel());
-                                        System.out.println("\nQue campo desea cambiar?\n");
-                                        System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
+                                        System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
+                                        System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
+                                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                                        System.out.println("Cargo dentro de la empresa: " + company.getEmployee().getPosition().getTitle());
+                                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
+                                        System.out.println("Salario: $" + company.getEmployee().getSalary());
+                                        if (company.getEmployee().isAdmin()) {
+                                            System.out.println("Administrativo: Si");
+                                        } else {
+                                            System.out.println("Administrativo: No");
+                                        }
+                                        System.out.println("\n");
+                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\t10. Salario\n\t11. Estatus de administrador\n\t12. Terminar edición");
                                     System.out.println("\nQue campo desea cambiar?\n");
-                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
                                     break;
                                 case 5:
                                     System.out.print("Nuevo apellido del Representante Legal: ");
                                     company.employee.setLastname(input.nextLine());
                                         System.out.println("\n        INFORMACIÓN ACTUALIZADA DE LA EMPRESA");
                                         System.out.println("=========================================================\n");
-                                        System.out.println("\tRazón Social: " + company.coName + "\n\tNIT: " + company.nit + "\n\tDirección: " + company.address);
-                                        System.out.println("\tRepresentante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\n\tDocumento Representante Legal: " + company.employee.getId());
-                                        System.out.println("\tCorreo electrónico RL: " + company.employee.getEmail());
-                                        System.out.println("\tCargo: " + company.employee.getPosition().getTitle() + "\n\tNivel: " + company.employee.getPosition().getLevel());
-                                        System.out.println("\nQue campo desea cambiar?\n");
-                                        System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
+                                        System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
+                                        System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
+                                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                                        System.out.println("Cargo dentro de la empresa: " + company.getEmployee().getPosition().getTitle());
+                                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
+                                        System.out.println("Salario: $" + company.getEmployee().getSalary());
+                                        if (company.getEmployee().isAdmin()) {
+                                            System.out.println("Administrativo: Si");
+                                        } else {
+                                            System.out.println("Administrativo: No");
+                                        }
+                                        System.out.println("\n");
+                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\t10. Salario\n\t11. Estatus de administrador\n\t12. Terminar edición");
                                     System.out.println("\nQue campo desea cambiar?\n");
-                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
                                     break;
                                 case 6:
                                     System.out.print("Nuevo documento Representante Legal: ");
                                     company.employee.setId(input.nextLine());
                                         System.out.println("\n        INFORMACIÓN ACTUALIZADA DE LA EMPRESA");
                                         System.out.println("=========================================================\n");
-                                        System.out.println("\tRazón Social: " + company.coName + "\n\tNIT: " + company.nit + "\n\tDirección: " + company.address);
-                                        System.out.println("\tRepresentante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\n\tDocumento Representante Legal: " + company.employee.getId());
-                                        System.out.println("\tCorreo electrónico RL: " + company.employee.getEmail());
-                                        System.out.println("\tCargo: " + company.employee.getPosition().getTitle() + "\n\tNivel: " + company.employee.getPosition().getLevel());
-                                        System.out.println("\nQue campo desea cambiar?\n");
-                                        System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
+                                        System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
+                                        System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
+                                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                                        System.out.println("Cargo dentro de la empresa: " + company.getEmployee().getPosition().getTitle());
+                                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
+                                        System.out.println("Salario: $" + company.getEmployee().getSalary());
+                                        if (company.getEmployee().isAdmin()) {
+                                            System.out.println("Administrativo: Si");
+                                        } else {
+                                            System.out.println("Administrativo: No");
+                                        }
+                                        System.out.println("\n");
+                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\t10. Salario\n\t11. Estatus de administrador\n\t12. Terminar edición");
                                     System.out.println("\nQue campo desea cambiar?\n");
-                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
                                     break;
                                 case 7:
                                     System.out.print("Nuevo correo electrónico: ");
                                     company.employee.setEmail(input.nextLine());
                                         System.out.println("\n        INFORMACIÓN ACTUALIZADA DE LA EMPRESA");
                                         System.out.println("=========================================================\n");
-                                        System.out.println("\tRazón Social: " + company.coName + "\n\tNIT: " + company.nit + "\n\tDirección: " + company.address);
-                                        System.out.println("\tRepresentante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\n\tDocumento Representante Legal: " + company.employee.getId());
-                                        System.out.println("\tCorreo electrónico RL: " + company.employee.getEmail());
-                                        System.out.println("\tCargo: " + company.employee.getPosition().getTitle() + "\n\tNivel: " + company.employee.getPosition().getLevel());
-                                        System.out.println("\nQue campo desea cambiar?\n");
-                                        System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
+                                        System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
+                                        System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
+                                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                                        System.out.println("Cargo dentro de la empresa: " + company.getEmployee().getPosition().getTitle());
+                                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
+                                        System.out.println("Salario: $" + company.getEmployee().getSalary());
+                                        if (company.getEmployee().isAdmin()) {
+                                            System.out.println("Administrativo: Si");
+                                        } else {
+                                            System.out.println("Administrativo: No");
+                                        }
+                                        System.out.println("\n");
+                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\t10. Salario\n\t11. Estatus de administrador\n\t12. Terminar edición");
                                     System.out.println("\nQue campo desea cambiar?\n");
-                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
                                     break;
                                 case 8:
                                     System.out.print("Nuevo nombre del cargo del representante legal: ");
                                     company.employee.getPosition().setTitle(input.nextLine());
                                         System.out.println("\n        INFORMACIÓN ACTUALIZADA DE LA EMPRESA");
                                         System.out.println("=========================================================\n");
-                                        System.out.println("\tRazón Social: " + company.coName + "\n\tNIT: " + company.nit + "\n\tDirección: " + company.address);
-                                        System.out.println("\tRepresentante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\n\tDocumento Representante Legal: " + company.employee.getId());
-                                        System.out.println("\tCorreo electrónico RL: " + company.employee.getEmail());
-                                        System.out.println("\tCargo: " + company.employee.getPosition().getTitle() + "\n\tNivel: " + company.employee.getPosition().getLevel());
-                                        System.out.println("\nQue campo desea cambiar?\n");
-                                        System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
+                                        System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
+                                        System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
+                                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                                        System.out.println("Cargo dentro de la empresa: " + company.getEmployee().getPosition().getTitle());
+                                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
+                                        System.out.println("Salario: $" + company.getEmployee().getSalary());
+                                        if (company.getEmployee().isAdmin()) {
+                                            System.out.println("Administrativo: Si");
+                                        } else {
+                                            System.out.println("Administrativo: No");
+                                        }
+                                        System.out.println("\n");
+                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\t10. Salario\n\t11. Estatus de administrador\n\t12. Terminar edición");
                                     System.out.println("\nQue campo desea cambiar?\n");
-                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
                                     break;
                                 case 9:
                                     System.out.print("Nuevo nivel de cargo del Representante Legal: ");
                                     company.employee.getPosition().setLevel(input.nextLine());
                                         System.out.println("\n        INFORMACIÓN ACTUALIZADA DE LA EMPRESA");
                                         System.out.println("=========================================================\n");
-                                        System.out.println("\tRazón Social: " + company.coName + "\n\tNIT: " + company.nit + "\n\tDirección: " + company.address);
-                                        System.out.println("\tRepresentante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\n\tDocumento Representante Legal: " + company.employee.getId());
-                                        System.out.println("\tCorreo electrónico RL: " + company.employee.getEmail());
-                                        System.out.println("\tCargo: " + company.employee.getPosition().getTitle() + "\n\tNivel: " + company.employee.getPosition().getLevel());
-                                        System.out.println("\nQue campo desea cambiar?\n");
-                                        System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
+                                        System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
+                                        System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
+                                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                                        System.out.println("Cargo dentro de la empresa: " + company.getEmployee().getPosition().getTitle());
+                                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
+                                        System.out.println("Salario: $" + company.getEmployee().getSalary());
+                                        if (company.getEmployee().isAdmin()) {
+                                            System.out.println("Administrativo: Si");
+                                        } else {
+                                            System.out.println("Administrativo: No");
+                                        }
+                                        System.out.println("\n");
+                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\t10. Salario\n\t11. Estatus de administrador\n\t12. Terminar edición");
                                     System.out.println("\nQue campo desea cambiar?\n");
-                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\n\t10. Terminar");
                                     break;
                                 case 10:
+                                    System.out.print("Nuevo Salario del Representante Legal: ");
+                                    company.employee.setSalary(Integer.parseInt(input.nextLine()));
+                                        System.out.println("\n        INFORMACIÓN ACTUALIZADA DE LA EMPRESA");
+                                        System.out.println("=========================================================\n");
+                                        System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
+                                        System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
+                                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                                        System.out.println("Cargo dentro de la empresa: " + company.getEmployee().getPosition().getTitle());
+                                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
+                                        System.out.println("Salario: $" + company.getEmployee().getSalary());
+                                        if (company.getEmployee().isAdmin()) {
+                                            System.out.println("Administrativo: Si");
+                                        } else {
+                                            System.out.println("Administrativo: No");
+                                        }
+                                        System.out.println("\n");
+                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\t10. Salario\n\t11. Estatus de administrador\n\t12. Terminar edición");
+                                    System.out.println("\nQue campo desea cambiar?\n");
+                                    break;
+                                case 11:
+                                    System.out.print("\nEl empleado es administrativo?\n");
+                                    System.out.println("\n\t1. Sí");
+                                    System.out.println("\t2. No\n");
+
+                                    int empTypeOptEd = Integer.parseInt(input.nextLine());
+                                    switch (empTypeOptEd) {
+                                        case 1:
+                                            company.employee.setAdmin(true);
+                                            break;
+                                        case 2:
+                                            company.employee.setAdmin(false);
+                                            break;
+                                        default:
+                                            System.out.println("========== Ha intoducido una opción inválida!! ==========");
+                                    }
+                                        System.out.println("\n        INFORMACIÓN ACTUALIZADA DE LA EMPRESA");
+                                        System.out.println("=========================================================\n");
+                                        System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
+                                        System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
+                                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                                        System.out.println("Cargo dentro de la empresa: " + company.employee.getPosition().getTitle());
+                                        System.out.println("Nivel: " + company.employee.getPosition().getLevel());
+                                        System.out.println("Salario: $" + company.getEmployee().getSalary());
+                                        if (company.getEmployee().isAdmin()) {
+                                            System.out.println("Administrativo: Si");
+                                        } else {
+                                            System.out.println("Administrativo: No");
+                                        }
+                                        System.out.println("\n");
+                                    System.out.println("\t1. Razón social\n\t2. NIT\n\t3. Dirección\n\t4. Nombre representante legal\n\t5. Apellido representante legal\n\t6. Documento Representante Legal\n\t7. Correo electrónico RL\n\t8. Cargo\n\t9. Nivel\n\t10. Salario\n\t11. Estatus de administrador\n\t12. Terminar edición");
+                                    System.out.println("\nQue campo desea cambiar?\n");
+                                    break;
+                                case 12:
                                     exitEdit = true;
                                     break;
                                 default:
-                                    System.out.println("========== Ha intoducidouna opción inválida!! ==========");
+                                    System.out.println("========== Ha intoducido una opción inválida!! ==========");
                             }
                         }
                     }
@@ -538,9 +665,17 @@ public class Company {
                         System.out.println("=========================================================\n");
                         System.out.println("Razón Social: " + company.coName + "\nNIT: " + company.nit + "\nDirección: " + company.address);
                         System.out.println("Representante Legal: " + company.employee.getName() + " " + company.employee.getLastname() + "\nDocumento Representante Legal: " + company.employee.getId());
-                        System.out.println("Correo electrónico RL: " + company.employee.getEmail());
-                        System.out.println("Cargo: " + company.employee.getPosition().getTitle() + "\nNivel: " + company.employee.getPosition().getLevel());
-
+                        System.out.println("Correo electrónico del Representante Legal: " + company.employee.getEmail());
+                        System.out.println("Cargo dentro de la empresa: " + company.getEmployee().getPosition().getTitle());
+                        System.out.println("Nivel: " + company.getEmployee().getPosition().getLevel());
+                        System.out.println("Salario: $" + company.getEmployee().getSalary());
+                        if (company.getEmployee().isAdmin()) {
+                            System.out.println("Administrativo: Si");
+                        } else {
+                            System.out.println("Administrativo: No");
+                        }
+                        System.out.println("\n");
+                        
                         System.out.print("\n\nRealmente quiere borrar esta empresa? (Si / No) ");
                         String remove = input.nextLine();
                         if (remove.equals("Si") || remove.equals("s") || remove.equals("Sí") || remove.equals("S")) {
@@ -557,7 +692,7 @@ public class Company {
                     System.out.println("============= VOLVIENDO AL MENÚ ANTERIOR ================");
                     break;
                 default:
-                    System.out.println("========== Ha intoducidouna opción inválida!! ==========");
+                    System.out.println("========== Ha intoducido una opción inválida!! ==========");
 
             }
 
@@ -639,5 +774,6 @@ public class Company {
 //        }
         
 //    }
+
     
 }
