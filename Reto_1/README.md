@@ -1,10 +1,10 @@
-#Reto 1
+# Reto 1
 
 * Reto 1 _ Persona Class
 
 ![UML_Reto_1](https://github.com/gasiferox/Grupo43_GustavoRomeroNocua/blob/main/Reto_1/UML/UML_clsPerson_Reto1.jpg)
 
-###Descripción del trabajo
+### Descripción del trabajo
 
 1. Se realizó el diseño de modelo de trabajo en UML utilizando la herramienta Draw.io. 
 
