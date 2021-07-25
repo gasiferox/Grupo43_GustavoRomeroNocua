@@ -7,3 +7,4 @@ Java Programming Class Group 43
 
 * Reto 2 - En fase final, tiene el proceso completo, queda pendiente agregar la adición de subordinados.
 
+* Reto 3 - En fase de desarrollo.
