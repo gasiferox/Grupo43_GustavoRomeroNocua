@@ -2,7 +2,9 @@
 
 ## Diagrama UML
 
-![UML_Diagram](https://github.com/gasiferox/Grupo43_GustavoRomeroNocua/blob/main/Reto_3/UML/Reto_3_UML_v2.jpg)
+| ![UML_Diagram](https://github.com/gasiferox/Grupo43_GustavoRomeroNocua/blob/main/Reto_3/UML/Reto_3_UML_v2.jpg) |
+|:--:|
+| *Figura 1 - UML resultante del planteamiento del problema* |
 
 ## Avance del proyecto
 
