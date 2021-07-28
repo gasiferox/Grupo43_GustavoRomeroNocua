@@ -58,6 +58,7 @@ public class IntClient extends javax.swing.JFrame {
         btnEditClient = new javax.swing.JButton();
         btnDeleteClient = new javax.swing.JButton();
         btnGoHome = new javax.swing.JButton();
+        btnSearchClient = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -188,7 +189,7 @@ public class IntClient extends javax.swing.JFrame {
             }
         });
 
-        btnEditClient.setText("Edit");
+        btnEditClient.setText("Editar");
 
         btnDeleteClient.setText("Borrar");
 
@@ -199,23 +200,31 @@ public class IntClient extends javax.swing.JFrame {
             }
         });
 
+        btnSearchClient.setText("Buscar");
+        btnSearchClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchClientActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(btnAddClient)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEditClient)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDeleteClient))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(318, 318, 318)
-                        .addComponent(btnGoHome)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(318, 318, 318)
+                .addComponent(btnGoHome)
+                .addContainerGap(325, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAddClient)
+                .addGap(18, 18, 18)
+                .addComponent(btnSearchClient)
+                .addGap(18, 18, 18)
+                .addComponent(btnEditClient)
+                .addGap(18, 18, 18)
+                .addComponent(btnDeleteClient)
+                .addGap(226, 226, 226))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +233,8 @@ public class IntClient extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddClient)
                     .addComponent(btnEditClient)
-                    .addComponent(btnDeleteClient))
+                    .addComponent(btnDeleteClient)
+                    .addComponent(btnSearchClient))
                 .addGap(18, 18, 18)
                 .addComponent(btnGoHome)
                 .addContainerGap(21, Short.MAX_VALUE))
@@ -240,7 +250,7 @@ public class IntClient extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(279, 279, 279)
                 .addComponent(jLabel5)
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,9 +267,9 @@ public class IntClient extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -373,6 +383,11 @@ public class IntClient extends javax.swing.JFrame {
         homeViewer.setVisible(true);
     }//GEN-LAST:event_btnGoHomeActionPerformed
 
+    private void btnSearchClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchClientActionPerformed
+        // TODO add your handling code here:
+        boolean clientFound = false;
+    }//GEN-LAST:event_btnSearchClientActionPerformed
+
     public void addClientsList() {
         DefaultListModel model = new DefaultListModel();
         int indexModel = 0;
@@ -433,6 +448,7 @@ public class IntClient extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteClient;
     private javax.swing.JButton btnEditClient;
     private javax.swing.JButton btnGoHome;
+    private javax.swing.JButton btnSearchClient;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
