@@ -12,13 +12,15 @@ package Model;
 public class Client {
     
     private String name;
+    private String id;
     private String address;
     private String phone;
     private String email;
     private Account account;
 
-    public Client(String name, String address, String phone, String email, Account account) {
+    public Client(String name, String id, String address, String phone, String email, Account account) {
         this.name = name;
+        this.id = id;
         this.address = address;
         this.phone = phone;
         this.email = email;
@@ -98,6 +100,20 @@ public class Client {
      */
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    /**
+     * @return the id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
     }
     
        

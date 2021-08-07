@@ -21,6 +21,10 @@ public class Account {
 
     public Account() {
     }
+
+    public Account(String edClientAccount, String edClientBalance) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     /**

@@ -11,6 +11,46 @@ package Model;
  */
 public class ProductLine {
     
-    int num;
+    private int productType;
+    private Product product;
+
+    public ProductLine(int productType, Product product) {
+        this.productType = productType;
+        this.product = product;
+    }
+
+    public ProductLine() {
+    }
+    
+    
+    /**
+     * @return the productType
+     */
+    public int getProductType() {
+        return productType;
+    }
+
+    /**
+     * @param productType the productType to set
+     */
+    public void setProductType(int productType) {
+        this.productType = productType;
+    }
+
+    /**
+     * @return the product
+     */
+    public Product getProduct() {
+        return product;
+    }
+
+    /**
+     * @param product the product to set
+     */
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+    
+    
     
 }

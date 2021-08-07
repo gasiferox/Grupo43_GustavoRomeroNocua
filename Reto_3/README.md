@@ -12,6 +12,8 @@
 
 27JUL21 --> Se definen los paquetes del proyecto, se modifica el UML y se inicial con el trabajo del Cliente por medio del modelo vista y ejecutando la acción de añadir clientes.
 
+08AGO21 --> Se inicia un nuevo planteamiento y se definen las [interfaces](https://github.com/gasiferox/Grupo43_GustavoRomeroNocua/blob/main/Reto_3/UML/Reto_3_Interfaces.jpg) a ser utilizadas.
+
 ## Enunciado
 
 Se requiere un software para la gestión de pedidos. Dicho software debe cumplir con una serie de requerimientos que se enumeran a continuación:
