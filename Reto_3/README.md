@@ -6,6 +6,11 @@
 |:--:|
 | *Figura 1 - UML resultante del planteamiento del problema* |
 
+| ![Interfaces_Diagram](https://github.com/gasiferox/Grupo43_GustavoRomeroNocua/blob/main/Reto_3/UML/Reto_3_Interfaces.jpg) |
+|:--:|
+| *Figura 2 - INTERFACES planteadas para la capa vista* |
+
+
 ## Avance del proyecto
 
 25JUL21 --> Se inicia el trabajo con el reto 3, se define la [primera versión del UML](https://github.com/gasiferox/Grupo43_GustavoRomeroNocua/blob/main/Reto_3/UML/Reto_3_UML_v1.jpg).
