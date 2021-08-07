@@ -6,6 +6,8 @@
 |:--:|
 | *Figura 1 - UML resultante del planteamiento del problema* |
 
+## Diagrama de Interfaces
+
 | ![Interfaces_Diagram](https://github.com/gasiferox/Grupo43_GustavoRomeroNocua/blob/main/Reto_3/UML/Reto_3_Interfaces.jpg) |
 |:--:|
 | *Figura 2 - INTERFACES planteadas para la capa vista* |
