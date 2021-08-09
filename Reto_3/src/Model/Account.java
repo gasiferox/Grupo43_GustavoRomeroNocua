@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.Date;
+
 /**
  *
  * @author maverick
@@ -13,10 +15,16 @@ public class Account {
     
     private double balance;
     private String accountNumber;
+    private String cardNumber;
+    private Date expDate;
+    private int ccv;
 
-    public Account(double balance, String accountNumber) {
+    public Account(double balance, String accountNumber, String cardNumber, Date expDate, int ccv) {
         this.balance = balance;
         this.accountNumber = accountNumber;
+        this.cardNumber = cardNumber;
+        this.expDate = expDate;
+        this.ccv = ccv;
     }
 
     public Account() {
@@ -53,6 +61,48 @@ public class Account {
      */
     public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
+    }
+
+    /**
+     * @return the cardNumber
+     */
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    /**
+     * @param cardNumber the cardNumber to set
+     */
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    /**
+     * @return the expDate
+     */
+    public Date getExpDate() {
+        return expDate;
+    }
+
+    /**
+     * @param expDate the expDate to set
+     */
+    public void setExpDate(Date expDate) {
+        this.expDate = expDate;
+    }
+
+    /**
+     * @return the ccv
+     */
+    public int getCcv() {
+        return ccv;
+    }
+
+    /**
+     * @param ccv the ccv to set
+     */
+    public void setCcv(int ccv) {
+        this.ccv = ccv;
     }
     
     
