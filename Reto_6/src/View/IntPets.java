@@ -364,7 +364,7 @@ public class IntPets extends javax.swing.JDialog {
     }
     
         void show_pets() {
-        String sql = "SELECT * FROM `tb_pet` WHERE 1";
+        String sql = "SELECT * FROM tb_pet tp INNER JOIN tb_pet_owners tpo ON tp.id_owner_pet = tpo.id ORDER BY tp.id DESC";
         try {
             cn = con.getConnection();
             st = cn.createStatement();
@@ -376,7 +376,7 @@ public class IntPets extends javax.swing.JDialog {
                 pet_owners[0] = rs.getInt("id");
                 pet_owners[1] = rs.getString("name");
                 pet_owners[2] = rs.getString("breed");
-                pet_owners[3] = rs.getString("id_owner_pet");
+                pet_owners[3] = rs.getString("owner");
                 pet_owners[4] = rs.getString("gender");
                 modelo.addRow(pet_owners);
                 System.out.println(rs.getInt("id"));
