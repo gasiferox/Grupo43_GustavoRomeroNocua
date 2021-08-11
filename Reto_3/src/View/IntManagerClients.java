@@ -30,8 +30,8 @@ public class IntManagerClients extends javax.swing.JDialog {
     public IntManagerClients(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);
-        clientsDbPreset();
+        setLocationRelativeTo(parent);
+//        clientsDbPreset();
         showClients();
     }
 
@@ -329,7 +329,7 @@ public class IntManagerClients extends javax.swing.JDialog {
 
     private void btn_addClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addClientActionPerformed
         // TODO add your handling code here:
-        addClient();
+//        addClient();
     }//GEN-LAST:event_btn_addClientActionPerformed
 
     private void btn_goHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_goHomeActionPerformed
@@ -437,32 +437,32 @@ public class IntManagerClients extends javax.swing.JDialog {
             jtb_clients.setModel(model);
     }
     
-    void addClient() {
-        try{
-            String clientName = txt_clientName.getText();
-            String clientId = txt_clientId.getText();
-            String clientAddress = txt_clientAddress.getText();
-            String clientPhone = txt_clientPhone.getText();
-            String clientEmail = txt_clientEmail.getText();
-            String clientAccount = txt_clientAccount.getText();
-            double clientBalance = Double.parseDouble(txt_clientBalance.getText());
-
-            if(clientName.equals("")|| clientId.equals("") || clientAddress.equals("") || clientPhone.equals("") || clientEmail.equals("") || clientAccount.equals("") /*|| clientBalance. == ""*/) {
-                JOptionPane.showMessageDialog(this, "Ingrese los valores requeridos en los campos!");
-            }else {
-                Account account = new Account(clientBalance, clientAccount);
-                Client client = new Client(clientName, clientId, clientAddress, clientPhone, clientEmail, account);
-
-                this.clientList.add(client);
-                addClientsList();
-                JOptionPane.showMessageDialog(rootPane, "El cliente ha sido añadido con éxito");
-                cleanClientInputData();
-                showClients();
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ingrese un valor adecuado para el saldo");
-        }
-    }
+//    void addClient() {
+//        try{
+//            String clientName = txt_clientName.getText();
+//            String clientId = txt_clientId.getText();
+//            String clientAddress = txt_clientAddress.getText();
+//            String clientPhone = txt_clientPhone.getText();
+//            String clientEmail = txt_clientEmail.getText();
+//            String clientAccount = txt_clientAccount.getText();
+//            double clientBalance = Double.parseDouble(txt_clientBalance.getText());
+//
+//            if(clientName.equals("")|| clientId.equals("") || clientAddress.equals("") || clientPhone.equals("") || clientEmail.equals("") || clientAccount.equals("") /*|| clientBalance. == ""*/) {
+//                JOptionPane.showMessageDialog(this, "Ingrese los valores requeridos en los campos!");
+//            }else {
+//                Account account = new Account(clientBalance, clientAccount);
+//                Client client = new Client(clientName, clientId, clientAddress, clientPhone, clientEmail, account);
+//
+//                this.clientList.add(client);
+//                addClientsList();
+//                JOptionPane.showMessageDialog(rootPane, "El cliente ha sido añadido con éxito");
+//                cleanClientInputData();
+//                showClients();
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Ingrese un valor adecuado para el saldo");
+//        }
+//    }
     
     void addClientsList() {
         DefaultListModel model = new DefaultListModel();
@@ -562,23 +562,23 @@ public class IntManagerClients extends javax.swing.JDialog {
         txt_clientBalance.setText("");
     }
     
-    void clientsDbPreset() {
-        Account account_01 = new Account(100000, "10001000-1");
-        Client client_01 = new Client("Pepito Perez", "1000001", "Cra 1 con calle 1", "300111111", "pepito@gmail.com", account_01);
-        clientList.add(client_01);
-        Account account_02 = new Account(200000, "20001000-2");
-        Client client_02 = new Client("Pedro Picapiedra", "1000002", "Cra 2 con calle 2", "300222222", "pedro.picapiedra@gmail.com", account_02);
-        clientList.add(client_02);
-        Account account_03 = new Account(300000, "30001000-3");
-        Client client_03 = new Client("Pablo Marmol", "1000003", "Cra 3 con calle 3", "300333333", "pablo.marmol@gmail.com", account_03);
-        clientList.add(client_03);
-        Account account_04 = new Account(400000, "40001000-4");
-        Client client_04 = new Client("John Snow", "1000004", "Cra 4 con calle 4", "300444444", "jsnow@gmail.com", account_04);
-        clientList.add(client_04);
-        Account account_05 = new Account(500000, "50001000-5");
-        Client client_05 = new Client("Bruce Banner", "1000005", "Cra 5 con calle 5", "300555555", "hulk@gmail.com", account_05);
-        clientList.add(client_05);
-    }
+//    void clientsDbPreset() {
+//        Account account_01 = new Account(100000, "10001000-1");
+//        Client client_01 = new Client("Pepito Perez", "1000001", "Cra 1 con calle 1", "300111111", "pepito@gmail.com", account_01);
+//        clientList.add(client_01);
+//        Account account_02 = new Account(200000, "20001000-2");
+//        Client client_02 = new Client("Pedro Picapiedra", "1000002", "Cra 2 con calle 2", "300222222", "pedro.picapiedra@gmail.com", account_02);
+//        clientList.add(client_02);
+//        Account account_03 = new Account(300000, "30001000-3");
+//        Client client_03 = new Client("Pablo Marmol", "1000003", "Cra 3 con calle 3", "300333333", "pablo.marmol@gmail.com", account_03);
+//        clientList.add(client_03);
+//        Account account_04 = new Account(400000, "40001000-4");
+//        Client client_04 = new Client("John Snow", "1000004", "Cra 4 con calle 4", "300444444", "jsnow@gmail.com", account_04);
+//        clientList.add(client_04);
+//        Account account_05 = new Account(500000, "50001000-5");
+//        Client client_05 = new Client("Bruce Banner", "1000005", "Cra 5 con calle 5", "300555555", "hulk@gmail.com", account_05);
+//        clientList.add(client_05);
+//    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_addClient;

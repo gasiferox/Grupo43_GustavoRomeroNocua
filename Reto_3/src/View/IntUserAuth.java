@@ -5,7 +5,6 @@
  */
 package View;
 
-import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
@@ -15,9 +14,12 @@ import javax.swing.JPasswordField;
  */
 public class IntUserAuth extends javax.swing.JDialog {
     
-    String USERCLIENT = "gasifero";
+    String USERCLIENT = "user";
     String USERPASS = "1234";
-
+    
+    String ADMINUSER = "admin";
+    String ADMINPASS = "admin";
+    
 
     /**
      * Creates new form IntClientAuth
@@ -65,6 +67,11 @@ public class IntUserAuth extends javax.swing.JDialog {
         });
 
         btn_signManager.setText("Adminisrador");
+        btn_signManager.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_signManagerActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel3.setText("VALIDACIÓN DE CREDENCIALES");
@@ -111,6 +118,11 @@ public class IntUserAuth extends javax.swing.JDialog {
         );
 
         btn_newClient.setText("Nuevo Cliente");
+        btn_newClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_newClientActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -173,7 +185,22 @@ public class IntUserAuth extends javax.swing.JDialog {
     private void btn_registeredUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registeredUserActionPerformed
         // TODO add your handling code here:
         clientAuth();
+        IntClientStore jdialogClientStore = new IntClientStore(new javax.swing.JFrame(), true);
+        jdialogClientStore.setVisible(true);
     }//GEN-LAST:event_btn_registeredUserActionPerformed
+
+    private void btn_newClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_newClientActionPerformed
+        // TODO add your handling code here:
+        IntClientRegister jdialogClientRegister = new IntClientRegister(new javax.swing.JFrame(), true);
+        jdialogClientRegister.setVisible(true);
+    }//GEN-LAST:event_btn_newClientActionPerformed
+
+    private void btn_signManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signManagerActionPerformed
+        // TODO add your handling code here:
+        adminAuth();
+        IntClientStore jdialogClientStore = new IntClientStore(new javax.swing.JFrame(), true);
+        jdialogClientStore.setVisible(true);
+    }//GEN-LAST:event_btn_signManagerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,18 +248,33 @@ public class IntUserAuth extends javax.swing.JDialog {
     void clientAuth() {
         JPasswordField pw = new JPasswordField(20);
         String user = txt_userId.getText();
-        //String password = new String(pw.getPassword());
-        char[] password = pw.getPassword();
-        //String password = pw.getText();
-        //String password =  String.valueOf(pw.getPassword());
-        System.out.println("user: " + user + "\npass: " + new String(password) + password + pw.getPassword() + pw.getText() + pw.getPassword());
+        String password = new String(psw_user.getPassword());
+        System.out.println("user: " + user + "\npass: " + password);
         if (user.equals(this.USERCLIENT) && password.equals(this.USERPASS)) {
-            JOptionPane.showMessageDialog(null, "Passwd correct" + "\n" + new String(password)/*pw.getPassword() + "\n" + pw.getText()*/ + String.valueOf(pw.getPassword()));
+            JOptionPane.showMessageDialog(null, "Passwd correct");
+            txt_userId.setText("");
+            psw_user.setText("");
         }else {
             JOptionPane.showMessageDialog(null, "Passwd not correct");
-
+            txt_userId.setText("");
+            psw_user.setText("");
         }
-        //pw.getText();
+    }
+
+    void adminAuth() {
+        JPasswordField pw = new JPasswordField(20);
+        String user = txt_userId.getText();
+        String password = new String(psw_user.getPassword());
+        System.out.println("user: " + user + "\npass: " + password);
+        if (user.equals(this.ADMINUSER) && password.equals(this.ADMINPASS)) {
+            JOptionPane.showMessageDialog(null, "Passwd correct");
+            txt_userId.setText("");
+            psw_user.setText("");
+        }else {
+            JOptionPane.showMessageDialog(null, "Passwd not correct");
+            txt_userId.setText("");
+            psw_user.setText("");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

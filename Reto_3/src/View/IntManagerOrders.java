@@ -5,6 +5,8 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author maverick
@@ -17,7 +19,7 @@ public class IntManagerOrders extends javax.swing.JDialog {
     public IntManagerOrders(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(parent);
         
     }
 
@@ -324,7 +326,7 @@ public class IntManagerOrders extends javax.swing.JDialog {
 
     private void btn_goHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_goHomeActionPerformed
         // TODO add your handling code here:
-        IntManagerClients.this.setVisible(false); // Close the JDialog
+//        IntManagerClients.this.setVisible(false); // Close the JDialog
     }//GEN-LAST:event_btn_goHomeActionPerformed
 
     private void jtb_clientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtb_clientsMouseClicked

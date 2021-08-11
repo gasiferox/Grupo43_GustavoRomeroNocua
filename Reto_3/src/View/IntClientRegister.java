@@ -17,6 +17,7 @@ public class IntClientRegister extends javax.swing.JDialog {
     public IntClientRegister(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(parent);
     }
 
     /**
@@ -350,7 +351,6 @@ public class IntClientRegister extends javax.swing.JDialog {
 
     private void btn_addClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addClientActionPerformed
         // TODO add your handling code here:
-        addClient();
     }//GEN-LAST:event_btn_addClientActionPerformed
 
     private void btn_editClientMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editClientMouseEntered
@@ -359,12 +359,10 @@ public class IntClientRegister extends javax.swing.JDialog {
 
     private void btn_editClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editClientActionPerformed
         // TODO add your handling code here:
-        editClient();
     }//GEN-LAST:event_btn_editClientActionPerformed
 
     private void btn_deleteClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteClientActionPerformed
         // TODO add your handling code here:
-        deleteClient();
     }//GEN-LAST:event_btn_deleteClientActionPerformed
 
     private void btn_goHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_goHomeMouseClicked
@@ -373,7 +371,7 @@ public class IntClientRegister extends javax.swing.JDialog {
 
     private void btn_goHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_goHomeActionPerformed
         // TODO add your handling code here:
-        IntManagerClients.this.setVisible(false); // Close the JDialog
+//        IntManagerClients.this.setVisible(false); // Close the JDialog
     }//GEN-LAST:event_btn_goHomeActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -382,7 +380,6 @@ public class IntClientRegister extends javax.swing.JDialog {
 
     private void btn_searchClientIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchClientIdActionPerformed
         // TODO add your handling code here:
-        searchClient();
     }//GEN-LAST:event_btn_searchClientIdActionPerformed
 
     /**
