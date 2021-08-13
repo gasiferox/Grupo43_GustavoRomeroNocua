@@ -9,4 +9,4 @@ Java Programming Class Group 43
 
 * Reto 3 - En fase de desarrollo.
 
-* Reto 6 - Implementado hasta la parte de mascotas en tercera interfase JDialog.
+* Reto 6 - Implementado hasta mascotas y combo boxes, pendiente la parte de Doctores.

@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.Controller;
 import Model.Conexion;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -25,6 +26,7 @@ public class IntPets extends javax.swing.JDialog {
     Statement st;
     ResultSet rs;
     DefaultTableModel modelo;
+    private final Controller controller;
 
     /**
      * Creates new form IntPets
@@ -33,6 +35,7 @@ public class IntPets extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
+        controller = new Controller(this);
         show_pets();
     }
 
@@ -52,7 +55,6 @@ public class IntPets extends javax.swing.JDialog {
         txt_petName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txt_ownerPet = new javax.swing.JTextField();
         cb_breed = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -63,6 +65,9 @@ public class IntPets extends javax.swing.JDialog {
         btn_deletePet = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txt_petId = new javax.swing.JTextField();
+        cb_petOwner = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        cb_petType = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtb_pets = new javax.swing.JTable();
@@ -80,8 +85,6 @@ public class IntPets extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel3.setText("Dueño");
-
-        cb_breed.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buldog Francés", "Pincher", "Pitbull", "Criollo", "Boxer", "Poodle", "Pastor Alemán", "Buldog Inglés", "Rottweiler" }));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel5.setText("REGISTRO DE MASCOTAS");
@@ -122,66 +125,85 @@ public class IntPets extends javax.swing.JDialog {
         jLabel8.setText("ID");
 
         txt_petId.setEditable(false);
+        txt_petId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_petIdActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jLabel4.setText("Tipo");
+
+        cb_petType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perro", "Gato" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(222, 222, 222)
+                            .addComponent(jLabel5))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(203, 203, 203)
+                            .addComponent(jLabel6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jrb_hembra)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jrb_macho)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_petName)
-                            .addComponent(cb_breed, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_ownerPet, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(182, 182, 182))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jrb_hembra)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jrb_macho))
-                            .addComponent(txt_petId, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(235, 235, 235))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btn_addPet)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_editPet)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_deletePet)
-                        .addGap(84, 84, 84))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(222, 222, 222)
-                .addComponent(jLabel5)
+                            .addComponent(txt_petId, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_petOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 93, Short.MAX_VALUE)
+                .addComponent(btn_addPet)
+                .addGap(18, 18, 18)
+                .addComponent(btn_editPet)
+                .addGap(18, 18, 18)
+                .addComponent(btn_deletePet)
+                .addGap(86, 86, 86))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(186, 186, 186)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_petName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_breed, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_petType, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(cb_petType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txt_petName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cb_breed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_breed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txt_ownerPet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_petOwner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -191,12 +213,12 @@ public class IntPets extends javax.swing.JDialog {
                     .addComponent(jLabel6)
                     .addComponent(jrb_hembra)
                     .addComponent(jrb_macho))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_addPet)
                     .addComponent(btn_editPet)
                     .addComponent(btn_deletePet))
-                .addGap(29, 29, 29))
+                .addContainerGap())
         );
 
         jtb_pets.setModel(new javax.swing.table.DefaultTableModel(
@@ -213,6 +235,9 @@ public class IntPets extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(jtb_pets);
+        if (jtb_pets.getColumnModel().getColumnCount() > 0) {
+            jtb_pets.getColumnModel().getColumn(0).setMaxWidth(60);
+        }
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel7.setText("HISTORIAL DE MASCOTAS");
@@ -223,7 +248,7 @@ public class IntPets extends javax.swing.JDialog {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(219, 219, 219)
@@ -236,7 +261,7 @@ public class IntPets extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -244,11 +269,11 @@ public class IntPets extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -257,8 +282,8 @@ public class IntPets extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -274,8 +299,8 @@ public class IntPets extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -293,6 +318,7 @@ public class IntPets extends javax.swing.JDialog {
 
     private void btn_deletePetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deletePetActionPerformed
         // TODO add your handling code here:
+        delete_pet();
     }//GEN-LAST:event_btn_deletePetActionPerformed
 
     private void jtb_petsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtb_petsMouseClicked
@@ -310,8 +336,30 @@ public class IntPets extends javax.swing.JDialog {
             System.out.println(id + " - " + name + " - " + breed + " - " + petOwner + " - " + gender);
             txt_petId.setText("" + id);
             txt_petName.setText(name);
+            
             cb_breed.setSelectedItem(breed);
-            txt_ownerPet.setText(petOwner);
+            int totalBreed = cb_breed.getItemCount();
+            
+            for (int i = 0; i < totalBreed; i++) {
+                System.out.println(cb_breed.getItemAt(i).toString());
+                if(cb_breed.getItemAt(i).toString().equals(breed)) {
+                    System.out.println("Ingreso al if1");
+                    cb_breed.setSelectedIndex(i);
+                }
+                
+            }
+            
+            cb_petOwner.setSelectedItem(petOwner);
+            int totalOwner = cb_petOwner.getItemCount();
+            
+            for (int i = 0; i < totalOwner; i++) {
+                System.out.println(cb_petOwner.getItemAt(i).toString());
+                if(cb_petOwner.getItemAt(i).toString().equals(petOwner)) {
+                    System.out.println("Ingreso al if2");
+                    cb_petOwner.setSelectedIndex(i);
+                }
+                
+            }
             
             if(gender.equals("Hembra"))
                 jrb_hembra.setSelected(true);
@@ -321,9 +369,11 @@ public class IntPets extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jtb_petsMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void txt_petIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_petIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_petIdActionPerformed
+
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -364,7 +414,7 @@ public class IntPets extends javax.swing.JDialog {
     }
     
         void show_pets() {
-        String sql = "SELECT * FROM tb_pet tp INNER JOIN tb_pet_owners tpo ON tp.id_owner_pet = tpo.id ORDER BY tp.id DESC";
+            String sql = "SELECT tp.id id_pet, tp.name pet_name, tb.name pet_breed, tp.gender pet_gender, tpo.owner pet_owner, tb.pet_type FROM tb_pet tp INNER JOIN tb_pet_owners tpo ON tp.id_pet_owner = tpo.id INNER JOIN tb_breeds tb ON tp.id_pet_breed = tb.id ORDER BY tp.id";
         try {
             cn = con.getConnection();
             st = cn.createStatement();
@@ -373,13 +423,13 @@ public class IntPets extends javax.swing.JDialog {
             Object[] pet_owners = new Object[5];
             modelo = (DefaultTableModel) jtb_pets.getModel();
             while (rs.next()) {
-                pet_owners[0] = rs.getInt("id");
-                pet_owners[1] = rs.getString("name");
-                pet_owners[2] = rs.getString("breed");
-                pet_owners[3] = rs.getString("owner");
-                pet_owners[4] = rs.getString("gender");
+                pet_owners[0] = rs.getInt("id_pet");
+                pet_owners[1] = rs.getString("pet_name");
+                pet_owners[2] = rs.getString("pet_breed");
+                pet_owners[3] = rs.getString("pet_owner");
+                pet_owners[4] = rs.getString("pet_gender");
                 modelo.addRow(pet_owners);
-                System.out.println(rs.getInt("id"));
+                System.out.println(rs.getInt("id_pet"));
             }
             jtb_pets.setModel(modelo);
         } catch (SQLException e) {
@@ -390,9 +440,9 @@ public class IntPets extends javax.swing.JDialog {
     void add_pet() {
         String gender = "";
         String name = txt_petName.getText();
-        String breed = cb_breed.getSelectedItem().toString();
-        String owner = txt_ownerPet.getText();
-        //int contact = Integer.parseInt(txt_clientPhone.getText());  // En caso de entero se parse a String
+
+        int ownerId = cb_petOwner.getSelectedIndex()+1;
+        int breedId = cb_breed.getSelectedIndex()+1;
         
         if (jrb_hembra.isSelected()) {
             gender = "Hembra";
@@ -403,17 +453,17 @@ public class IntPets extends javax.swing.JDialog {
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Falta ingresar el nombre de la mascota");
         } else {
-            String query = "INSERT INTO `tb_pet`(`name`, `breed`, `gender`, `id_owner_pet`) VALUES('" + name + "', '" + breed + "','" + owner + "', '" + gender + "')";
+            String query = "INSERT INTO tb_pet(name, gender, id_pet_owner, id_pet_breed) VALUES('" + name + "', '" + gender + "'," + ownerId + ", " + breedId + ")";
 
             try {
                 cn = con.getConnection();
                 st = cn.createStatement();
                 st.executeUpdate(query);
-                JOptionPane.showMessageDialog(this, "El usuario ha sido creado");
+                JOptionPane.showMessageDialog(this, "La mascota ha sido creada con éxito");
                 clear_rows_table();
                 show_pets();
             } catch (HeadlessException | SQLException e) {
-                JOptionPane.showMessageDialog(this, "No se pudo crear el usuario");
+                JOptionPane.showMessageDialog(this, "No se pudo crear la mascota");
             }
         }
     }
@@ -424,9 +474,12 @@ public class IntPets extends javax.swing.JDialog {
         int id = Integer.parseInt(txt_petId.getText());
         String name = txt_petName.getText();
         String breed = cb_breed.getSelectedItem().toString();
-        String ownerPet = txt_ownerPet.getText();
-        String gender = "";
         
+        int ownerId = cb_petOwner.getSelectedIndex()+1;
+        int breedId = cb_breed.getSelectedIndex()+1;
+        
+        
+        String gender = "";
         if (jrb_hembra.isSelected()) { 
             gender = "Hembra";
         }else {
@@ -436,7 +489,7 @@ public class IntPets extends javax.swing.JDialog {
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Falta ingresar el nombre del dueño");
         } else {
-            String query = "UPDATE tb_pet SET name = '" + name + "', breed= '" + breed + "', gender = '" + gender + "', id_owner_pet='" + ownerPet + "' WHERE id = " + id;
+            String query = "UPDATE tb_pet SET name = '" + name + "', gender= '" + gender + "', id_pet_owner = " + ownerId + ", id_pet_breed=" + breedId + " WHERE id = " + id;
             try {
                 cn = con.getConnection();
                 st = cn.createStatement();
@@ -450,26 +503,26 @@ public class IntPets extends javax.swing.JDialog {
         }
     }
 
-//    void delete_owner() {
-//        int fila = jtb_petOwners.getSelectedRow();
-//        int id = Integer.parseInt(txt_clientId.getText());
-//        if (fila == -1) {
-//            JOptionPane.showMessageDialog(this, "No has seleccionado un dueño de mascota");
-//        } else {
-//
-//            System.out.println("ID: " + id);
-//            String query = "DELETE FROM tb_pet_owners WHERE id = " + id;
-//            try {
-//                cn = con.getConnection();
-//                st = cn.createStatement();
-//                st.executeUpdate(query);
-//                JOptionPane.showMessageDialog(this, "El dueño ha sido eliminado con exito");
-//                clear_rows_table();
-//                show_pet_owners();
-//            } catch (HeadlessException | SQLException e) {
-//            }
-//        }
-//    }
+    void delete_pet() {
+        int fila = jtb_pets.getSelectedRow();
+        int id = Integer.parseInt(txt_petId.getText());
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "No has seleccionado una mascota");
+        } else {
+
+            System.out.println("ID: " + id);
+            String query = "DELETE FROM tb_pet WHERE id = " + id;
+            try {
+                cn = con.getConnection();
+                st = cn.createStatement();
+                st.executeUpdate(query);
+                JOptionPane.showMessageDialog(this, "La mascota ha sido eliminada con exito");
+                clear_rows_table();
+                show_pets();
+            } catch (HeadlessException | SQLException e) {
+            }
+        }
+    }
 
     void clear_rows_table() {
         for (int i = 0; i < jtb_pets.getRowCount(); i++) {
@@ -477,7 +530,7 @@ public class IntPets extends javax.swing.JDialog {
             i = i - 1;
         }
         txt_petName.setText("");
-        txt_ownerPet.setText("");
+        //txt_ownerPet.setText("");
         txt_petId.setText("");
     }
 
@@ -486,10 +539,13 @@ public class IntPets extends javax.swing.JDialog {
     private javax.swing.JButton btn_deletePet;
     private javax.swing.JButton btn_editPet;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cb_breed;
+    public javax.swing.JComboBox<Object> cb_breed;
+    public javax.swing.JComboBox<Object> cb_petOwner;
+    private javax.swing.JComboBox<String> cb_petType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -501,7 +557,6 @@ public class IntPets extends javax.swing.JDialog {
     private javax.swing.JRadioButton jrb_hembra;
     private javax.swing.JRadioButton jrb_macho;
     private javax.swing.JTable jtb_pets;
-    private javax.swing.JTextField txt_ownerPet;
     private javax.swing.JTextField txt_petId;
     private javax.swing.JTextField txt_petName;
     // End of variables declaration//GEN-END:variables

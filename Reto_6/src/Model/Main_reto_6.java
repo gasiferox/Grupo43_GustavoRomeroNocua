@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package reto_6;
+package Model;
 
-import Model.Conexion;
 import View.IntHospital;
 
 /**
  *
  * @author maverick
  */
-public class Reto_6 {
+public class Main_reto_6 {
 
     /**
      * @param args the command line arguments
@@ -23,7 +22,9 @@ public class Reto_6 {
         IntHospital inst_frame = new IntHospital();
         inst_connect.getConnection();
         inst_frame.setVisible(true);
-
+        DataModelDB model = new DataModelDB();
+        model.getOwners(1);
+        model.getBreed(1);
     }
     
 }
