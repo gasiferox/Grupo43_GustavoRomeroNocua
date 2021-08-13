@@ -198,8 +198,8 @@ public class IntUserAuth extends javax.swing.JDialog {
     private void btn_signManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signManagerActionPerformed
         // TODO add your handling code here:
         adminAuth();
-        IntClientStore jdialogClientStore = new IntClientStore(new javax.swing.JFrame(), true);
-        jdialogClientStore.setVisible(true);
+        IntManagerHub jdialogManagerHub = new IntManagerHub(new javax.swing.JFrame(), true);
+        jdialogManagerHub.setVisible(true);
     }//GEN-LAST:event_btn_signManagerActionPerformed
 
     /**
