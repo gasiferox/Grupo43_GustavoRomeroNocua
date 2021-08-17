@@ -88,7 +88,6 @@ public class DataModelDB {
         ArrayList listHospital = new ArrayList();
         try {
             String sql ="SELECT th.id id_hospital, th.name hospital_name FROM tb_hospital th";
-//            String sql = "SELECT id, owner FROM `tb_pet_owners` WHERE 1";
             cn = con.getConnection();
             st = cn.createStatement();
             rs = st.executeQuery(sql);
@@ -99,7 +98,7 @@ public class DataModelDB {
                     datosDB.setidHospital(rs.getInt("id_hospital"));
                     datosDB.setHospitalName(rs.getString("hospital_name"));
                     listHospital.add(datosDB);
-                    System.out.println(datosDB.getHospitalName());
+//                    System.out.println(datosDB.getHospitalName());
                 }
             }else {
                 System.out.println("Error 3");

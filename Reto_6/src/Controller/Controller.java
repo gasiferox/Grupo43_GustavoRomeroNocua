@@ -49,12 +49,6 @@ public class Controller implements ActionListener {
         getBreed();
         Item item_breed = (Item) view.cb_breed.getSelectedItem();
         events();
-//        view.cb_breed.addActionListener(this);
-        
-//        this.view2 = view2;
-//        getHospital();
-//        ItemDoctorInt item_hospital = (ItemDoctorInt) view2.cb_hospital.getSelectedItem();
-//        events();
         
     }
     
