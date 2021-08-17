@@ -1,12 +1,16 @@
-# Grupo43_GustavoRomeroNocua
-Java Programming Class Group 43
+# Reto 6
+ 
+## Avance del proyecto
 
-### FOLDER STATUS
+10AGO21 --> Se termina el proyecto siguiendo las indicaciones de la clase, se hace la conexión mediante el procedimiento simple y se realizan tres interfases que se conectan entre si.
 
-* Reto 1 - Entregado
+12AGO21 --> Se avanza hasta la interfase de las mascotas conectando los combo boxes a la base de datos.
 
-* Reto 2 - En fase final, tiene el proceso completo, queda pendiente agregar la adición de subordinados.
+17AGO21 --> Se termina la implementación, quedan funcionales 3 combo boxes trabajando con tablas dinámicas desde la base de datos.
 
-* Reto 3 - En fase de desarrollo.
+## Diagrama MER
 
-* Reto 6 - Implementado hasta mascotas y combo boxes, pendiente la parte de Doctores.
+| ![MER_Diagram](https://github.com/gasiferox/Grupo43_GustavoRomeroNocua/blob/main/Reto_6/MER/MER_diagram_v1.jpg) |
+|:--:|
+| *Figura 1 - MER resultante de la estructura SQL* |
+

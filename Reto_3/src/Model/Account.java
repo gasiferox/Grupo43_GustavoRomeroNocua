@@ -16,10 +16,10 @@ public class Account {
     private double balance;
     private String accountNumber;
     private String cardNumber;
-    private Date expDate;
+    private String expDate;
     private int ccv;
 
-    public Account(double balance, String accountNumber, String cardNumber, Date expDate, int ccv) {
+    public Account(double balance, String accountNumber, String cardNumber, String expDate, int ccv) {
         this.balance = balance;
         this.accountNumber = accountNumber;
         this.cardNumber = cardNumber;
@@ -80,14 +80,14 @@ public class Account {
     /**
      * @return the expDate
      */
-    public Date getExpDate() {
+    public String getExpDate() {
         return expDate;
     }
 
     /**
      * @param expDate the expDate to set
      */
-    public void setExpDate(Date expDate) {
+    public void setExpDate(String expDate) {
         this.expDate = expDate;
     }
 

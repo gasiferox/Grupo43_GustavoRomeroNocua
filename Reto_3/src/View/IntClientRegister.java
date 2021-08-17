@@ -5,11 +5,16 @@
  */
 package View;
 
+import Model.Client;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author maverick
  */
 public class IntClientRegister extends javax.swing.JDialog {
+    
+    DefaultTableModel model;
 
     /**
      * Creates new form IntClientRegister
@@ -18,6 +23,7 @@ public class IntClientRegister extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
+        
     }
 
     /**
@@ -423,6 +429,16 @@ public class IntClientRegister extends javax.swing.JDialog {
             }
         });
     }
+    
+    void showClients() {
+            model = (DefaultTableModel)jtb_clients.getModel();
+            model.setRowCount(0);
+            for (Client client : clientList) {
+                model.addRow(new Object[]{client.getName(), client.getId(), client.getAddress(), client.getPhone(), client.getEmail(), client.getAccount().getAccountNumber(),client.getAccount().getBalance()});
+            }
+            jtb_clients.setModel(model);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_addClient;
